@@ -3,10 +3,16 @@ import boto3
 from urllib.parse import parse_qs
 
 def lambda_handler(event, context):
-    # Parse form data
-    body = parse_qs(event['body'])
-    email = body.get('email', [None])[0]
-    cryptos = body.get('cryptos', [])
+    # Check if body is URL-encoded
+    if event['headers']['Content-Type'] == 'application/x-www-form-urlencoded':
+        body = parse_qs(event['body'])
+        email = body.get('email', [None])[0]
+        cryptos = body.get('cryptos', [])
+    else:
+        return {
+            'statusCode': 400,
+            'body': json.dumps('Unsupported content type')
+        }
 
     if not email or not cryptos:
         return {
