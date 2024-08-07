@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto Watcher</title>
+</head>
+<body>
+    <h1>Subscribe to Crypto Price Updates</h1>
+    <form action="https://<api-id>.execute-api.<region>.amazonaws.com/prod/subscribe" method="post">
+        <label for="phone">Phone Number:</label><br>
+        <input type="text" id="phone" name="phone"><br>
+        <label for="provider">Provider:</label><br>
+        <select id="provider" name="provider">
+            <option value="1">Verizon</option>
+            <option value="2">AT&T</option>
+            <option value="3">T-Mobile</option>
+            <option value="4">Sprint</option>
+        </select><br>
+        <label for="cryptos">Cryptocurrencies:</label><br>
+        <input type="checkbox" id="bitcoin" name="cryptos" value="bitcoin"> Bitcoin<br>
+        <input type="checkbox" id="ethereum" name="cryptos" value="ethereum"> Ethereum<br>
+        <input type="checkbox" id="dogecoin" name="cryptos" value="dogecoin"> Dogecoin<br><br>
+        <input type="submit" value="Subscribe">
+    </form>
+</body>
+</html>
