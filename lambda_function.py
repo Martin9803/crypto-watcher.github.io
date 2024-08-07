@@ -3,9 +3,14 @@ import boto3
 from urllib.parse import parse_qs
 
 def lambda_handler(event, context):
-    # Parse the body as URL-encoded form data
     try:
+        # Log the event for debugging purposes
+        print("Event: ", event)
+        
+        # Parse the body as URL-encoded form data
         body = parse_qs(event['body'])
+        
+        # Extract the email and cryptos values
         email = body.get('email', [None])[0]
         cryptos = body.get('cryptos', [])
 
